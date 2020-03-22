@@ -1,0 +1,74 @@
+Name:         example-mosquittocluster
+Namespace:    mosquitto-operator
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"edge.io/v1alpha1","kind":"MosquittoCluster","metadata":{"annotations":{},"name":"example-mosquittocluster","namespace":"mos...
+API Version:  edge.io/v1alpha1
+Kind:         MosquittoCluster
+Metadata:
+  Creation Timestamp:  2020-02-11T16:21:00Z
+  Generation:          2
+  Resource Version:    5594738
+  Self Link:           /apis/edge.io/v1alpha1/namespaces/mosquitto-operator/mosquittoclusters/example-mosquittocluster
+  UID:                 81d4c6b1-71fd-41e1-a92f-0e60fadccddc
+Spec:
+  Config:
+    Init Limit:  10
+    Sync Limit:  2
+    Tick Time:   2000
+  Image:
+    Pull Policy:  Always
+    Repository:   192.168.1.99/library/eclipse-mosquitto
+    Tag:          1.6.8
+  Labels:
+    App:      example-mosquittocluster
+    Release:  example-mosquittocluster
+  Persistence:
+    Reclaim Policy:  Retain
+    Spec:
+      Access Modes:
+        ReadWriteOnce
+      Resources:
+        Requests:
+          Storage:  20Gi
+  Pod:
+    Affinity:
+      Pod Anti Affinity:
+        Preferred During Scheduling Ignored During Execution:
+          Pod Affinity Term:
+            Label Selector:
+              Match Expressions:
+                Key:       app
+                Operator:  In
+                Values:
+                  example-mosquittocluster
+            Topology Key:  kubernetes.io/hostname
+          Weight:          20
+    Labels:
+      App:      example-mosquittocluster
+      Release:  example-mosquittocluster
+    Resources:
+    Termination Grace Period Seconds:  30
+  Ports:
+    Container Port:  1883
+    Name:            client
+    Container Port:  9001
+    Name:            websocket
+    Container Port:  9888
+    Name:            leader-election
+  Replicas:          3
+Status:
+  External Client Endpoint:  
+  Internal Client Endpoint:  
+  Members:
+    Ready:
+      Ready
+      Ready
+      Ready
+    Unready:
+      Unready
+      Unready
+      Unready
+  Ready Replicas:  0
+  Replicas:        0
+Events:            <none>
